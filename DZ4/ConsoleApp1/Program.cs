@@ -4,6 +4,45 @@ namespace ConsoleApp1
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+            char[] letters = { ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+            Console.WriteLine("Введите количество элементов массива: ");
+
+            int n = int.Parse(Console.ReadLine());
+            int[] mas = new int[n];
+
+            mas = InitMas(mas);
+
+            Console.WriteLine("Чётные значения:");
+
+            char[] firstmas = FirstMas(mas, letters);
+
+            for (int i = 0; i < firstmas.Length; i++)
+            {
+                firstmas[i] = UpperLetter(firstmas[i]);
+            }
+
+            PrintMas(firstmas);
+
+            Console.WriteLine("Нечетные значения:");
+
+            char[] secondmas = SecondMas(mas, letters);
+
+            for (int i = 0; i < secondmas.Length; i++)
+            {
+                secondmas[i] = UpperLetter(secondmas[i]);
+            }
+
+            PrintMas(secondmas);
+
+            Console.WriteLine();
+            Console.WriteLine(CountUpperLetter(firstmas) > CountUpperLetter(secondmas) ? ("В массиве чётных значений больше в верхнем регистре букв:" + CountUpperLetter(firstmas)) : ("В массиве нечётных значений больше в верхнем регистре букв: " + CountUpperLetter(secondmas)));
+
+            Console.ReadKey();
+        }
+
         static void PrintMas(char[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
@@ -115,45 +154,6 @@ namespace ConsoleApp1
             }
 
             return count;
-        }
-
-        static void Main(string[] args)
-        {
-            char[] letters = { ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-
-            Console.WriteLine("Введите количество элементов массива: ");
-
-            int n = int.Parse(Console.ReadLine());
-            int[] mas = new int[n];
-
-            mas = InitMas(mas);
-
-            Console.WriteLine("Чётные значения:");
-
-            char[] firstmas = FirstMas(mas, letters);
-
-            for (int i = 0; i < firstmas.Length; i++)
-            {
-                firstmas[i] = UpperLetter(firstmas[i]);
-            }
-
-            PrintMas(firstmas);
-
-            Console.WriteLine("Нечетные значения:");
-
-            char[] secondmas = SecondMas(mas, letters);
-
-            for (int i = 0; i < secondmas.Length; i++)
-            {
-                secondmas[i] = UpperLetter(secondmas[i]);
-            }
-
-            PrintMas(secondmas);
-
-            Console.WriteLine();
-            Console.WriteLine(CountUpperLetter(firstmas) > CountUpperLetter(secondmas) ? ("В массиве чётных значений больше в верхнем регистре букв:" + CountUpperLetter(firstmas)) : ("В массиве нечётных значений больше в верхнем регистре букв: " + CountUpperLetter(secondmas)));
-
-            Console.ReadKey();
         }
     }
 }
